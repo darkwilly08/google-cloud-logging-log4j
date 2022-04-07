@@ -21,7 +21,7 @@ public class CloudLoggingAppenderTest extends TestCase {
 		logger.debug("debug test");
 		logger.info("info test");
 		logger.warn("warn test");
-		logger.error("error test");
+		logger.error("error test", new Exception("exception trace bla bla"));
 		logger.fatal("fatal test");
 	}
 
