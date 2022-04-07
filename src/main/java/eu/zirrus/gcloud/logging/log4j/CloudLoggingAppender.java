@@ -27,6 +27,7 @@ import com.google.cloud.logging.Payload;
 import com.google.cloud.logging.Severity;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.time.Instant;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -112,6 +113,7 @@ public class CloudLoggingAppender extends AbstractAppender {
         LogEntry entry = LogEntry.newBuilder(Payload.JsonPayload.of(payload))
                 .setLogName(logName)
                 .setResource(this.resource)
+                .setTimestamp(Instant.now().toEpochMilli())
                 .setSeverity(getCloudLoggingSeverity(event.getLevel()))
                 .build();
         // Writes the log entry
